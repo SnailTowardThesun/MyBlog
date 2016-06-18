@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block title%}
+    <title>Thanks!</title>
+{% endblock%}
+
+{% block page_name%}
+    <h1>Thanks for your comment</h1>
+{% endblock %}
+
+{% block content %}
+    <script>setTimeout(redirect_to_home, 5000)</script>
+{% endblock %}
