@@ -1,9 +1,9 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.mat-toolbar .mat-toolbar-row {
+    display: flex;
 }
 
-li {
-    display: inline;
-}
+.button-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
