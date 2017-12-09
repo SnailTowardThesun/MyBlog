@@ -7,13 +7,15 @@ import { ContactComponent } from './contact/contact.component';
 import { PlayerComponent } from './player/player.component';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'index', component: IndexComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'player', component: PlayerComponent }
+  { path: 'player', component: PlayerComponent },
+  { path: 'article:id', component: ArticleDetailComponent }
 ];
 
 @NgModule({
