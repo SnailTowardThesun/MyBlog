@@ -22,10 +22,10 @@
 
 1. 获取文章分类信息以及文章数量
 
-    `GET http://127.0.0.1/article_category`
+    `GET http://127.0.0.1/category`
 
 ## 用户交互
 
 1. 发表评论
 
-    `POST http://127.0.0.1/artcile_comment`
+    `POST http://127.0.0.1/comment`
