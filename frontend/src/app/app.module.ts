@@ -5,8 +5,6 @@ import { MatButtonModule, MatCheckboxModule, MatToolbarModule } from '@angular/m
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AboutComponent } from './about/about.component';
-import { ContactComponent } from './contact/contact.component';
 import { PlayerComponent } from './player/player.component';
 import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
@@ -15,8 +13,6 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
-    ContactComponent,
     PlayerComponent,
     IndexComponent,
     FooterComponent,
