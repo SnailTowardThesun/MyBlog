@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
-
+  content = "coming soon ...";
   constructor() { }
 
   ngOnInit() {
