@@ -1,0 +1,12 @@
+.div-contact-container {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    height: 160px;
+    width: 500px;
+}
+
+mat-form-field.mat-form-field {
+    width: 100%;
+    font-size: 12px;
+}
