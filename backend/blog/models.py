@@ -9,7 +9,7 @@ def get_article(request):
     return HttpResponse('1')
 
 
-def get_article_category(request):
+def get_category(request):
     return HttpResponse('2')
 
 
