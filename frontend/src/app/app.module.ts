@@ -14,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { AboutComponent } from './footer/about/about.component';
 import { ContactComponent } from './footer/contact/contact.component';
+import { IndexContentComponent } from './index/index-content/index-content.component';
+import { IndexSlideComponent } from './index/index-slide/index-slide.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { ContactComponent } from './footer/contact/contact.component';
     ArticleDetailComponent,
     AboutComponent,
     ContactComponent,
+    IndexContentComponent,
+    IndexSlideComponent,
   ],
   imports: [
     BrowserModule,

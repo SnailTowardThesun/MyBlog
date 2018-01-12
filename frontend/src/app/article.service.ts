@@ -7,7 +7,7 @@ export class ArticleService {
   constructor() { }
 
   getAritcleByPage(page: number): Article[] {
-    var arr: Article[] = [
+    const arr: Article[] = [
     ];
 
     return arr;
@@ -18,7 +18,7 @@ export class ArticleService {
   }
 
   getArticleComments(article: Article): Comment[] {
-    var comments: Comment[] = [
+    const comments: Comment[] = [
 
     ];
 
@@ -26,11 +26,10 @@ export class ArticleService {
   }
 
   getTopCategoeries(top: number): Category[] {
-    var categories: Category[] = [
+    const categories: Category[] = [
 
     ];
 
     return categories;
   }
-
 }
