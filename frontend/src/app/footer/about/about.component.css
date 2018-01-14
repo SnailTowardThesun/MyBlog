@@ -1,15 +1,15 @@
 .div-aboutme {
     display: flex;
     flex-direction: row;
-    margin-left: 35px;
-    margin-top: 20px;
+    margin: auto;
+    padding-left: 16px;
     text-align: left;
-    height: 160px;
     width: 100%;
+    position: relative;
 }
 
 .img-about-cat {
-    height: 100%;
+    height: 160px;
     width: height;
 }
 

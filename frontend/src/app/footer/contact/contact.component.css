@@ -2,11 +2,12 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    height: 160px;
+    height: 200px;
     width: 500px;
+    margin-top: 10px;
 }
 
 mat-form-field.mat-form-field {
     width: 100%;
-    font-size: 12px;
+    font-size: 16px;
 }
