@@ -1,14 +1,16 @@
 # 博客设计
 
-使用Django＋Angular 4 搭建博客
+使用Django ＋ Angular 搭建博客
 
 [Django](http://djangoproject.com/)
 
-[Angulay](https://angular.io/)
+[Angular](https://angular.io/)
+
+[Angular material](https://material.angular.io/)
 
 ## 主要结构设计文档
 
-前后端分离，使用protobuf进行通信。
+前后端分离
 
 ### 文章获取
 
