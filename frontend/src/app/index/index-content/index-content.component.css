@@ -1,3 +1,12 @@
 .index-content-main-container {
     padding: 5px
 }
+
+.mat-card {
+    margin-top: 10px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

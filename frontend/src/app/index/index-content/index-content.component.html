@@ -1,15 +1,32 @@
-<div class="index-content-main-container">
+<div class='index-content-main-container'>
     <h2>
         For The Good Future
     </h2>
     <hr>
     <div *ngIf='pageEvent'>
-        <mat-list>
-            <mat-list-item *ngFor="let article of articles">
-                {{ article.title }}
-            </mat-list-item>
-        </mat-list>
+        <mat-card *ngFor='let article of articles'>
+            <mat-card-title>
+                <a href='javascript:void(0)'>{{ article.title }}</a>
+            </mat-card-title>
+            <mat-card-subtitle>
+                {{ article.publish_date | date }}
+                <span *ngFor='let category of article.category' class='index-item-category'>
+                    {{ category }}
+                </span>
+            </mat-card-subtitle>
+            <mat-card-content>
+                <a href='javascript:void(0)'>
+                    {{ article.content }}
+                </a>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color='primary'>Read More</button>
+                <button mat-raised-button color='primary'>LIKE</button>
+                <button mat-raised-button color='primary'>DISLIKE</button>
+                <button mat-raised-button color='primary'>SHARE</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
-    <mat-paginator [length]="pageLength" [pageSize]="pageSize" [pageSizeOptions]='pageSizeOptions' (page)="pageEvent = $event">
+    <mat-paginator [length]='pageLength' [pageSize]='pageSize' [pageSizeOptions]='pageSizeOptions' (page)='pageEvent = $event'>
     </mat-paginator>
 </div>

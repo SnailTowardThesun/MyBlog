@@ -7,6 +7,8 @@ import { MatInputModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +43,9 @@ import { IndexSlideComponent } from './index/index-slide/index-slide.component';
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
