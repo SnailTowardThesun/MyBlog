@@ -1,5 +1,26 @@
 <div class='index-slide-main-container'>
-  <h1>
-    slide
-  </h1>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Recent</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-nav-list>
+        <a mat-list-item href='javascript:void(0)' *ngFor='let article of articles'>
+          {{ article.title }}
+        </a>
+      </mat-nav-list>
+    </mat-card-content>
+  </mat-card>
+  <mat-card>
+      <mat-card-header>
+        <mat-card-title>Category</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-nav-list>
+          <a mat-list-item href='javascript:void(0)' *ngFor='let article of articles'>
+            {{ article.category }}
+          </a>
+        </mat-nav-list>
+      </mat-card-content>
+    </mat-card>
 </div>
