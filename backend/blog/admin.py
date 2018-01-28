@@ -2,5 +2,10 @@
 from __future__ import unicode_literals
 
 from django.contrib import admin
+from .models import ArticleHasCategory, Article, Category, Comment
 
 # Register your models here.
+admin.site.register(Article)
+admin.site.register(ArticleHasCategory)
+admin.site.register(Category)
+admin.site.register(Comment)
