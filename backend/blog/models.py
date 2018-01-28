@@ -18,7 +18,7 @@ class Article(models.Model):
     publish_date = models.DateField()
     content = models.CharField(max_length=500, blank=True, null=True)
     category = models.CharField(max_length=200, blank=True, null=True)
-    comment = models.ForeignKey('Comment', models.DO_NOTHING)
+    comment = models.ForeignKey('Comment', models.DO_NOTHING, null=True)
     path = models.CharField(max_length=1024)
 
     class Meta:
