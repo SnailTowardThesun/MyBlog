@@ -14,11 +14,10 @@ import uuid
 class Article(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1())
     title = models.CharField(max_length=100)
-    author = models.CharField(max_length=45, default='Me')
+    author = models.CharField(max_length=45)
     publish_date = models.DateField()
     content = models.CharField(max_length=500, blank=True, null=True)
     category = models.CharField(max_length=200, blank=True, null=True)
-    comment = models.ForeignKey('Comment', models.DO_NOTHING, null=True)
     path = models.CharField(max_length=1024)
 
     class Meta:
@@ -48,10 +47,10 @@ class Category(models.Model):
 
 class Comment(models.Model):
     id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1())
-    article_id = models.CharField(max_length=36)
     author = models.CharField(max_length=500)
     publish_date = models.DateField()
     content = models.CharField(max_length=1000, blank=True, null=True)
+    article = models.ForeignKey(Article, models.DO_NOTHING)
 
     class Meta:
         managed = False
