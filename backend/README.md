@@ -106,10 +106,10 @@
     ```
     POST http://localhost/blog/register_commnet
     {
-        "article_id":"6024a4de-03f6-11e8-a1d6-a45e60dce389",
-        "author":"guest",
-        "content":"great"
-    }
+        "article_id":"6024a4de-03f6-11e8-a1d6-a45e60dce389",        // 文章ID
+        "author":"guest",                                           // 评论的作者
+        "content":"great"                                           // 评论内容
+    }
     ```
     response:
     ```
