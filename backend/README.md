@@ -14,6 +14,8 @@
 
 1. 使用`python3 manage.py inspectdb > blog/models.py`命令将数据库中的内容导出工程中
 
+1. 修改每个model中id的属性，由原本的`CharField`，改为`models.UUIDField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)`
+
 ## 后端对外接口设计
 数据库采用json作为信息传递的荷载协议。TODO: 后期希望能够换成protobuf作为信息的传递。
 

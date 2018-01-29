@@ -12,13 +12,16 @@ import uuid
 
 
 class Article(models.Model):
-    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1())
+    id = models.UUIDField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=45)
     publish_date = models.DateField()
     content = models.CharField(max_length=500, blank=True, null=True)
     category = models.CharField(max_length=200, blank=True, null=True)
     path = models.CharField(max_length=1024)
+
+    def __str__(self):
+        return self.title
 
     class Meta:
         managed = False
@@ -36,9 +39,12 @@ class ArticleHasCategory(models.Model):
 
 
 class Category(models.Model):
-    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1())
+    id = models.UUIDField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     article_id = models.CharField(max_length=36)
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         managed = False
@@ -46,11 +52,14 @@ class Category(models.Model):
 
 
 class Comment(models.Model):
-    id = models.CharField(primary_key=True, max_length=36, default=uuid.uuid1())
+    id = models.UUIDField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)
     author = models.CharField(max_length=500)
     publish_date = models.DateField()
     content = models.CharField(max_length=1000, blank=True, null=True)
     article = models.ForeignKey(Article, models.DO_NOTHING)
+
+    def __str__(self):
+        return self.author
 
     class Meta:
         managed = False
