@@ -1,7 +1,6 @@
 from django.http import HttpResponse, HttpResponseForbidden
 from . import errno
 import json
-from django.db.models import Count
 from .models import Article, ArticleHasCategory, Comment, Category
 
 
