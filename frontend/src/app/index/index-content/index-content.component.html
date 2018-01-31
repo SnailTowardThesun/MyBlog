@@ -2,7 +2,6 @@
     <h2>
         For The Good Future
     </h2>
-    <hr>
     <div *ngIf='pageEvent'>
         <mat-card *ngFor='let article of articles'>
             <mat-card-title>
@@ -21,9 +20,9 @@
             </mat-card-content>
             <mat-card-actions>
                 <button mat-raised-button color='primary'>Read More</button>
-                <button mat-raised-button color='primary'>LIKE</button>
-                <button mat-raised-button color='primary'>DISLIKE</button>
-                <button mat-raised-button color='primary'>SHARE</button>
+                <button mat-raised-button color='primary' disabled>LIKE</button>
+                <button mat-raised-button color='primary' disabled>DISLIKE</button>
+                <button mat-raised-button color='primary' disabled>SHARE</button>
             </mat-card-actions>
         </mat-card>
     </div>

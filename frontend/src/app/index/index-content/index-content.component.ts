@@ -18,7 +18,7 @@ export class IndexContentComponent implements OnInit {
   pageSize = 5;
   pageSizeOptions = [5, 10];
 
-  pageEvent: PageEvent = {pageIndex: 0, pageSize: this.pageSize, length: this.pageLength};
+  pageEvent: PageEvent = { pageIndex: 0, pageSize: this.pageSize, length: this.pageLength };
 
   ngOnInit() {
   }
