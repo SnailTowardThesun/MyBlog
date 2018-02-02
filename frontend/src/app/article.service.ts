@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Article, Comment, Category } from './module/article';
-
 @Injectable()
 export class ArticleService {
 
