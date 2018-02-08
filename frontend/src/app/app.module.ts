@@ -22,7 +22,6 @@ import { AboutComponent } from './footer/about/about.component';
 import { ContactComponent } from './footer/contact/contact.component';
 import { IndexContentComponent } from './index/index-content/index-content.component';
 import { IndexSlideComponent } from './index/index-slide/index-slide.component';
-import { HttpClient } from 'selenium-webdriver/http';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,7 @@ import { HttpClient } from 'selenium-webdriver/http';
     MatPaginatorModule,
     MatCardModule,
     MatIconModule,
-    HttpClient
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
