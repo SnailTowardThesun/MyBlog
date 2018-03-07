@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseForbidden
 from . import errno
 import json
-from .models import Article, ArticleHasCategory, Comment, Category
+from .models import Article, Comment, Category
 
 
 # for GET request

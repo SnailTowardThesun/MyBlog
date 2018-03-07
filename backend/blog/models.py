@@ -26,29 +26,18 @@ class Article(models.Model):
         return self.title
 
     class Meta:
-        managed = False
         db_table = 'article'
-
-
-class ArticleHasCategory(models.Model):
-    article = models.ForeignKey(Article, models.DO_NOTHING, primary_key=True)
-    category = models.ForeignKey('Category', models.DO_NOTHING)
-
-    class Meta:
-        managed = False
-        db_table = 'article_has_category'
-        unique_together = (('article', 'category'),)
 
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)
+    article = models.OneToOneField(Article, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
 
     class Meta:
-        managed = False
         db_table = 'category'
 
 
@@ -63,5 +52,4 @@ class Comment(models.Model):
         return self.author
 
     class Meta:
-        managed = False
         db_table = 'comment'
