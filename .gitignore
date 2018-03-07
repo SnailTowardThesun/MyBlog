@@ -4,5 +4,4 @@ __init__.py*
 .idea
 .DS_Store
 backend/config.json
-backend/backend/settings.py
 /.vs
