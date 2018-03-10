@@ -1,4 +1,4 @@
-export class Article {
+export interface Article {
     id: string;
     title: string;
     author: string;
@@ -7,7 +7,7 @@ export class Article {
     category: string[];
 }
 
-export class Comment {
+export interface Comment {
     id: string;
     article_id: string;
     author: string;
@@ -15,7 +15,7 @@ export class Comment {
     content: string;
 }
 
-export class Category {
+export interface Category {
     name: string;
     count: number;
 }

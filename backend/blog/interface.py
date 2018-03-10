@@ -21,7 +21,6 @@ def get_all_articles(request):
                 'author': a.author,
                 'publish data': str(a.publish_date),
                 'content': a.content,
-                'categories': a.category,
                 'path': a.path
             } for a in articles]
         }}
@@ -35,14 +34,19 @@ def get_all_categories(request):
         return HttpResponseForbidden(json.dumps(data))
 
     categories = Category.objects.all()
+    dic = {}
+
+    for c in categories:
+        dic[c.name] = c
+
     res = {
         'code': 0,
         'data': {
             'categories': [{
-                'id': str(c.id),
-                'name': c.name,
-                'count': Category.objects.filter(category=c.id).count()
-            } for c in categories]
+                'id': str(d.id),
+                'name': d.name,
+                'count': Category.objects.filter(name=d.name).count()
+            } for d in dic.values()]
         }
     }
     return HttpResponse(json.dumps(res))
@@ -56,7 +60,7 @@ def get_comment_by_article(request):
     article_id = request.GET['article_id']
 
     comments = Comment.objects.filter(article=article_id)
-    
+
     res = {
         'code': 0,
         'date': {

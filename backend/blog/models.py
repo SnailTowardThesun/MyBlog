@@ -31,7 +31,7 @@ class Article(models.Model):
 
 class Category(models.Model):
     id = models.UUIDField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)
-    article = models.OneToOneField(Article, on_delete=models.CASCADE)
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
 
     def __str__(self):
