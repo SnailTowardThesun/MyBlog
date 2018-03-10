@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../../module/article';
 import { ARTICLES } from '../../module/mock-aritcle';
 import { PageEvent } from '@angular/material';
+import { ArticleService } from "../../article.service"
 
 @Component({
   selector: 'app-index-content',
@@ -10,7 +11,7 @@ import { PageEvent } from '@angular/material';
 })
 export class IndexContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private articleService: ArticleService) { }
 
   articles = ARTICLES;
 
@@ -21,5 +22,6 @@ export class IndexContentComponent implements OnInit {
   pageEvent: PageEvent = { pageIndex: 0, pageSize: this.pageSize, length: this.pageLength };
 
   ngOnInit() {
+    this.articleService.getAritcleByPage(1);
   }
 }

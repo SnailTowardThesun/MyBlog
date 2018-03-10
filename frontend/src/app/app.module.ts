@@ -21,6 +21,7 @@ import { AboutComponent } from './footer/about/about.component';
 import { ContactComponent } from './footer/contact/contact.component';
 import { IndexContentComponent } from './index/index-content/index-content.component';
 import { IndexSlideComponent } from './index/index-slide/index-slide.component';
+import { ArticleService } from './article.service';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { IndexSlideComponent } from './index/index-slide/index-slide.component';
     MatIconModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

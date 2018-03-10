@@ -1,16 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Article, Comment, Category } from './module/article';
+
+interface Response {
+  code: number,
+  data: object
+}
+
 @Injectable()
 export class ArticleService {
 
-  generalUrl = "http://127.0.0.1:8000/blog";
+  generalUrl = "http://localhost:8000/blog";
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   getAritcleByPage(page: number): Article[] {
     const arr: Article[] = [
     ];
+
+    var url = this.generalUrl + "/article"
+
+    this.http.get<Response>(url).subscribe(code => console.log(code));
+
+   // console.log(this.http.get<Response>(url));
 
     return arr;
   }

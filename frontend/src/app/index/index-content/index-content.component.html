@@ -9,9 +9,6 @@
             </mat-card-title>
             <mat-card-subtitle>
                 {{ article.publish_date | date }}
-                <span *ngFor='let category of article.category' class='index-item-category'>
-                    {{ category }}
-                </span>
             </mat-card-subtitle>
             <mat-card-content>
                 <a href='javascript:void(0)'>
