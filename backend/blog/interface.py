@@ -11,6 +11,7 @@ def get_all_articles(request):
         return HttpResponseForbidden(json.dumps(data))
 
     articles = Article.objects.all()
+
     res = {
         'code': 0,
         'data': {
@@ -40,7 +41,7 @@ def get_all_categories(request):
             'categories': [{
                 'id': str(c.id),
                 'name': c.name,
-                'count': ArticleHasCategory.objects.filter(category=c.id).count()
+                'count': Category.objects.filter(category=c.id).count()
             } for c in categories]
         }
     }
@@ -55,6 +56,7 @@ def get_comment_by_article(request):
     article_id = request.GET['article_id']
 
     comments = Comment.objects.filter(article=article_id)
+    
     res = {
         'code': 0,
         'date': {

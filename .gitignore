@@ -5,3 +5,4 @@ __init__.py*
 .DS_Store
 backend/config.json
 /.vs
+venv
