@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../../module/article';
+import { Article, Category } from '../../module/article';
 import { ARTICLES } from '../../module/mock-aritcle';
 import { PageEvent } from '@angular/material';
 import { ArticleService } from '../../article.service';
@@ -22,7 +22,7 @@ export class IndexContentComponent implements OnInit {
   pageEvent: PageEvent = { pageIndex: 0, pageSize: this.pageSize, length: this.pageLength };
 
   ngOnInit() {
-    this.articleService.getAritcleByPage(1).subscribe(res => {
+    this.articleService.getAritcles().subscribe(res => {
       this.articles = <Article[]>res.data['article'];
     });
   }

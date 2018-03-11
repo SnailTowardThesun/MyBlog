@@ -4,7 +4,7 @@ import { Article, Comment, Category } from './module/article';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Observable } from 'rxjs/Observable';
 
-interface Response {
+interface ResponseData {
   code: number;
   data: object;
 }
@@ -16,22 +16,16 @@ export class ArticleService {
 
   constructor(private http: HttpClient) { }
 
-  getAritcleByPage(page: number): Observable<Response> {
+  getAritcles(): Observable<ResponseData> {
     const url = this.generalUrl + '/article';
 
-    return this.http.get<Response>(url);
+    return this.http.get<ResponseData>(url);
   }
 
-  getArticlePages(): number {
-    return 0;
-  }
+  getArticleComments(article: Article): Observable<ResponseData> {
+    const url = this.generalUrl + '/comment?article_id' + article.id;
 
-  getArticleComments(article: Article): Comment[] {
-    const comments: Comment[] = [
-
-    ];
-
-    return comments;
+    return this.http.get<ResponseData>(url);
   }
 
   getTopCategoeries(top: number): Category[] {
