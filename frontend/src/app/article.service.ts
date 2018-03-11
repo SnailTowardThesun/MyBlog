@@ -3,8 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Article, Comment, Category } from './module/article';
 import { forEach } from '@angular/router/src/utils/collection';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { catchError, map, tap } from 'rxjs/operators';
 
 interface Response {
   code: number;
