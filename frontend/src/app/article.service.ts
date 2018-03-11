@@ -1,30 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Article, Comment, Category } from './module/article';
+import { forEach } from '@angular/router/src/utils/collection';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { catchError, map, tap } from 'rxjs/operators';
 
 interface Response {
-  code: number,
-  data: object
+  code: number;
+  data: object;
 }
 
 @Injectable()
 export class ArticleService {
 
-  generalUrl = "http://localhost:8000/blog";
+  generalUrl = 'http://localhost:8000/blog';
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAritcleByPage(page: number): Article[] {
-    const arr: Article[] = [
-    ];
+  getAritcleByPage(page: number): Observable<Response> {
+    const url = this.generalUrl + '/article';
 
-    var url = this.generalUrl + "/article"
-
-    this.http.get<Response>(url).subscribe(code => console.log(code));
-
-   // console.log(this.http.get<Response>(url));
-
-    return arr;
+    return this.http.get<Response>(url);
   }
 
   getArticlePages(): number {

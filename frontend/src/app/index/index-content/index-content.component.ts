@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../../module/article';
 import { ARTICLES } from '../../module/mock-aritcle';
 import { PageEvent } from '@angular/material';
-import { ArticleService } from "../../article.service"
+import { ArticleService } from '../../article.service';
 
 @Component({
   selector: 'app-index-content',
@@ -13,7 +13,7 @@ export class IndexContentComponent implements OnInit {
 
   constructor(private articleService: ArticleService) { }
 
-  articles = ARTICLES;
+  articles: Article[];
 
   pageLength = 10;
   pageSize = 5;
@@ -22,6 +22,8 @@ export class IndexContentComponent implements OnInit {
   pageEvent: PageEvent = { pageIndex: 0, pageSize: this.pageSize, length: this.pageLength };
 
   ngOnInit() {
-    this.articleService.getAritcleByPage(1);
+    this.articleService.getAritcleByPage(1).subscribe(res => {
+      this.articles = <Article[]>res.data['article'];
+    });
   }
 }
