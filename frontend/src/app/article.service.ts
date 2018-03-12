@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Article, Comment, Category } from './module/article';
-import { forEach } from '@angular/router/src/utils/collection';
 import { Observable } from 'rxjs/Observable';
 
 interface ResponseData {
@@ -25,7 +24,9 @@ export class ArticleService {
   private getAritcles() {
     const url = this.generalUrl + '/article';
 
-    this.http.get<ResponseData>(url).subscribe(r => this.articles = <Article[]>r.data['article']);
+    this.http.get<ResponseData>(url).subscribe(r => {
+      this.articles = <Article[]>r.data['article']
+    });
   }
 
   public getArticleComments(article: Article): Observable<ResponseData> {
