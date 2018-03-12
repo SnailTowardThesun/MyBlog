@@ -14,25 +14,31 @@ export class ArticleService {
 
   generalUrl = 'http://localhost:8000/blog';
 
-  constructor(private http: HttpClient) { }
+  public articles: Article[];
+  public categories: Category[];
 
-  getAritcles(): Observable<ResponseData> {
-    const url = this.generalUrl + '/article';
-
-    return this.http.get<ResponseData>(url);
+  constructor(private http: HttpClient) {
+    this.getAritcles();
+    this.getCategoeries();
   }
 
-  getArticleComments(article: Article): Observable<ResponseData> {
+  private getAritcles() {
+    const url = this.generalUrl + '/article';
+
+    this.http.get<ResponseData>(url).subscribe(r => this.articles = <Article[]>r.data['article']);
+  }
+
+  public getArticleComments(article: Article): Observable<ResponseData> {
     const url = this.generalUrl + '/comment?article_id' + article.id;
 
     return this.http.get<ResponseData>(url);
   }
 
-  getTopCategoeries(top: number): Category[] {
-    const categories: Category[] = [
+  private getCategoeries() {
+    const url = this.generalUrl + '/categories';
 
-    ];
-
-    return categories;
+    this.http.get<ResponseData>(url).subscribe(res => {
+      this.categories = <Category[]>res.data['categories'];
+    });
   }
 }

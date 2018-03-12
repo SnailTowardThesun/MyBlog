@@ -12,9 +12,7 @@ import { ArticleService } from '../../article.service';
 export class IndexContentComponent implements OnInit {
 
   constructor(private articleService: ArticleService) { }
-
-  articles: Article[];
-
+  
   pageLength = 10;
   pageSize = 5;
   pageSizeOptions = [5, 10];
@@ -22,8 +20,6 @@ export class IndexContentComponent implements OnInit {
   pageEvent: PageEvent = { pageIndex: 0, pageSize: this.pageSize, length: this.pageLength };
 
   ngOnInit() {
-    this.articleService.getAritcles().subscribe(res => {
-      this.articles = <Article[]>res.data['article'];
-    });
+    
   }
 }

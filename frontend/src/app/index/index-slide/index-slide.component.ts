@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../../module/article';
+import { Article, Category } from '../../module/article';
 import { ARTICLES, CATEGORIES } from '../../module/mock-aritcle';
+import { ArticleService } from '../../article.service';
 
 @Component({
   selector: 'app-index-slide',
@@ -9,10 +10,10 @@ import { ARTICLES, CATEGORIES } from '../../module/mock-aritcle';
 })
 export class IndexSlideComponent implements OnInit {
 
-  constructor() { }
-  articles = ARTICLES;
-  categories = CATEGORIES;
+  constructor(private articleService: ArticleService) { }
+
   ngOnInit() {
+
   }
 
 }

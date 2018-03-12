@@ -3,7 +3,7 @@
         For The Good Future
     </h2>
     <div *ngIf='pageEvent'>
-        <mat-card *ngFor='let article of articles'>
+        <mat-card *ngFor='let article of articleService.articles'>
             <mat-card-title>
                 <a href='javascript:void(0)'>{{ article.title }}</a>
             </mat-card-title>
