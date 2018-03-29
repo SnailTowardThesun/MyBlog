@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-article-detail',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./article-detail.component.css']
 })
 export class ArticleDetailComponent implements OnInit {
+  constructor(private route: ActivatedRoute) { }
 
-  constructor() { }
+  articlePath: string;
 
   ngOnInit() {
+    this.articlePath =  'http://localhost:8000/blog' + '/article?path=' + this.route.snapshot.paramMap.get('path');
   }
-
 }

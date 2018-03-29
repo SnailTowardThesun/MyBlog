@@ -22,6 +22,7 @@ import { ContactComponent } from './footer/contact/contact.component';
 import { IndexContentComponent } from './index/index-content/index-content.component';
 import { IndexSlideComponent } from './index/index-slide/index-slide.component';
 import { ArticleService } from './article.service';
+import { MarkdownModule } from 'angular2-markdown';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ArticleService } from './article.service';
     MatPaginatorModule,
     MatCardModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]

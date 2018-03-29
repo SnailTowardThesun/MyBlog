@@ -16,10 +16,10 @@
                 </a>
             </mat-card-content>
             <mat-card-actions>
-                <button mat-raised-button color='primary'>Read More</button>
-                <button mat-raised-button color='primary' disabled>LIKE</button>
-                <button mat-raised-button color='primary' disabled>DISLIKE</button>
-                <button mat-raised-button color='primary' disabled>SHARE</button>
+                <a mat-raised-button color='primary' routerLink="/article/{{ article.path }}">Read More</a>
+                <button mat-raised-button color='primary' (click)="onLike(article.id)" disabled>LIKE</button>
+                <button mat-raised-button color='primary' (click)="onDislike(article.id)" disabled>DISLIKE</button>
+                <button mat-raised-button color='primary' (click)="onShare(article.id)" disabled>SHARE</button>
             </mat-card-actions>
         </mat-card>
     </div>

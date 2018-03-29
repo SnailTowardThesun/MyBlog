@@ -11,7 +11,7 @@ interface ResponseData {
 @Injectable()
 export class ArticleService {
 
-  generalUrl = 'http://localhost:8000/blog';
+  apiURL = 'http://localhost:8000/blog';
 
   public articles: Article[];
   public categories: Category[];
@@ -22,21 +22,27 @@ export class ArticleService {
   }
 
   private getAritcles() {
-    const url = this.generalUrl + '/article';
+    const url = this.apiURL + '/articles';
 
     this.http.get<ResponseData>(url).subscribe(r => {
       this.articles = <Article[]>r.data['article']
     });
   }
 
+  private getArticle(path) {
+    const url = this.apiURL + '/article?' + path;
+
+    return this.http.get<Response>(url);
+  }
+
   public getArticleComments(article: Article): Observable<ResponseData> {
-    const url = this.generalUrl + '/comment?article_id' + article.id;
+    const url = this.apiURL + '/comment?article_id' + article.id;
 
     return this.http.get<ResponseData>(url);
   }
 
   private getCategoeries() {
-    const url = this.generalUrl + '/categories';
+    const url = this.apiURL + '/categories';
 
     this.http.get<ResponseData>(url).subscribe(res => {
       this.categories = <Category[]>res.data['categories'];

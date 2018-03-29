@@ -22,4 +22,13 @@ export class IndexContentComponent implements OnInit {
   ngOnInit() {
     
   }
+  onLike(id) {
+    console.log('like');
+  }
+  onDislike(id) {
+    console.log('dislike');
+  }
+  onShare(id) {
+    console.log('share');
+  }
 }

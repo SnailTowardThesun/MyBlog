@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'index', component: IndexComponent },
   { path: 'player', component: PlayerComponent },
-  { path: 'article:id', component: ArticleDetailComponent }
+  { path: 'article/:path', component: ArticleDetailComponent },
+  
 ];
 
 @NgModule({

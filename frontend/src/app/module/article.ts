@@ -4,6 +4,7 @@ export interface Article {
     author: string;
     publish_date: string;
     content: string;
+    path: string;
 }
 
 export interface Comment {

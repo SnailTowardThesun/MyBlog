@@ -2,6 +2,7 @@ from django.http import HttpResponse, HttpResponseForbidden
 from . import errno
 import json
 from .models import Article, Comment, Category
+from django.core.files.base import ContentFile
 
 
 # for GET request
@@ -26,6 +27,17 @@ def get_all_articles(request):
         }}
 
     return HttpResponse(json.dumps(res))
+
+
+def get_article(request):
+    if request.method != "GET":
+        data = {'code': errno.ERROR_HTTP_METHOD_INVALID, "data": {}}
+        return HttpResponseForbidden(json.dumps(data))
+
+    file_to_send = ContentFile("# title")
+    response = HttpResponse(file_to_send)
+    response['Content-Length'] = file_to_send.size
+    return response
 
 
 def get_all_categories(request):
