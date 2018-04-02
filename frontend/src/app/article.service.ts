@@ -48,4 +48,10 @@ export class ArticleService {
       this.categories = <Category[]>res.data['categories'];
     });
   }
+
+  public getArticlesByCategory(id: string) {
+    const url = this.apiURL + '/category?id=' + id;
+
+    return this.http.get<ResponseData>(url);
+  }
 }

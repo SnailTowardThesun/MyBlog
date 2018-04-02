@@ -64,6 +64,28 @@ def get_all_categories(request):
     return HttpResponse(json.dumps(res))
 
 
+def get_article_by_category(request):
+    if request.method != "GET":
+        data = {'code': errno.ERROR_HTTP_METHOD_INVALID, "data": {}}
+        return HttpResponseForbidden(json.dumps(data))
+
+    result = Category.objects.filter(id=request.GET['id'])
+    res = {
+        'code': 0,
+        'data': {
+            'article': [{
+                'id': str(a.article.id),
+                'title': a.article.title,
+                'author': a.article.author,
+                'publish data': str(a.article.publish_date),
+                'content': a.article.content,
+                'path': a.article.path
+            } for a in result]
+        }}
+
+    return HttpResponse(json.dumps(res))
+
+
 def get_comment_by_article(request):
     if request.method != "GET":
         data = {'code': errno.ERROR_HTTP_METHOD_INVALID, "data": {}}

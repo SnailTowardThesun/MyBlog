@@ -11,16 +11,11 @@ import { ArticleService } from '../../article.service';
 })
 export class IndexContentComponent implements OnInit {
 
-  constructor(private articleService: ArticleService) { }
-  
-  pageLength = 10;
-  pageSize = 5;
-  pageSizeOptions = [5, 10];
-
-  pageEvent: PageEvent = { pageIndex: 0, pageSize: this.pageSize, length: this.pageLength };
+  constructor(private articleService: ArticleService) {
+  }
 
   ngOnInit() {
-    
+    console.log(this.articleService);
   }
   onLike(id) {
     console.log('like');

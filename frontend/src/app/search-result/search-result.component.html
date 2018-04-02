@@ -1,0 +1,24 @@
+<div class='index-content-main-container'>
+  <div *ngIf='articles'>
+    <mat-card *ngFor='let article of articles'>
+      <mat-card-title>
+        <a href='javascript:void(0)' routerLink="/article/{{ article.path }}">{{ article.title }}</a>
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ article.publish_date | date }}
+      </mat-card-subtitle>
+      <mat-card-content>
+        <a href='javascript:void(0)' routerLink="/article/{{ article.path }}">
+          {{ article.content }}
+        </a>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button color='primary' routerLink="/article/{{ article.path }}">Read More</a>
+        <button mat-raised-button color='primary' (click)="onLike(article.id)" disabled>LIKE</button>
+        <button mat-raised-button color='primary' (click)="onDislike(article.id)" disabled>DISLIKE</button>
+        <button mat-raised-button color='primary' (click)="onShare(article.id)" disabled>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>

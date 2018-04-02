@@ -23,6 +23,7 @@ import { IndexContentComponent } from './index/index-content/index-content.compo
 import { IndexSlideComponent } from './index/index-slide/index-slide.component';
 import { ArticleService } from './article.service';
 import { MarkdownModule } from 'angular2-markdown';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { MarkdownModule } from 'angular2-markdown';
     ContactComponent,
     IndexContentComponent,
     IndexSlideComponent,
+    SearchResultComponent,
   ],
   imports: [
     BrowserModule,
