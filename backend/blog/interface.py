@@ -1,10 +1,12 @@
 from django.http import HttpResponse, HttpResponseForbidden
 from . import errno
 import json
-from .models import Article, Comment, Category
+from .models import Article, Comment, Category, LeaveMessage
 from django.core.files.base import ContentFile
 from django.contrib.staticfiles.storage import staticfiles_storage
-import os, pathlib
+import os
+import pathlib
+from django.core.mail import send_mail
 
 
 # for GET request
@@ -40,7 +42,7 @@ def get_article(request):
         data = {'code': errno.ERROR_ARTICLE_NOT_EXISTS, "data": {}}
         return HttpResponseForbidden(json.dumps(data))
 
-    path = 'blog/' + staticfiles_storage.url(request.GET['path'])
+    path = 'blog/' + 'static/' + request.GET['path']
     if not os.path.isfile(path):
         data = {'code': errno.ERROR_ARTICLE_NOT_EXISTS, 'data': {}}
         return HttpResponseForbidden(json.dumps(data))
@@ -123,7 +125,18 @@ def get_comment_by_article(request):
 
 # for POST method
 def post_comment(request):
-    if request.method != "GET":
+    if request.method != "POST":
         data = {'code': errno.ERROR_HTTP_METHOD_INVALID, "data": {}}
         return HttpResponseForbidden(json.dumps(data))
-    return HttpResponse("get comment form")
+
+    request_json_obj = json.loads(request.body)
+    if len(request_json_obj["email"]) > 0 and len(request_json_obj['name']) > 0 and len(
+            request_json_obj['message']) > 0:
+        LeaveMessage(name=request_json_obj['name'], email=request_json_obj['email'],
+                     message=request_json_obj['message']).save()
+
+    res = {
+        'code': 0,
+        'data': {}
+    }
+    return HttpResponse(json.dumps(res))

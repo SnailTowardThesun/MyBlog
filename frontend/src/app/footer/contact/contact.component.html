@@ -2,17 +2,17 @@
   <mat-grid-list cols="2" rowHeight="100%">
     <mat-grid-tile colspan="1" rowspan="1">
       <mat-form-field color='accent'>
-        <input matInput placeholder="Your Email">
+        <input matInput placeholder="Your Email" [(ngModel)]="email">
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile colspan="1" rowspan="1" style="margin-left:5px;">
       <mat-form-field color='accent'>
-        <input matInput placeholder="Your Name">
+        <input matInput placeholder="Your Name" [(ngModel)]="name">
       </mat-form-field>
     </mat-grid-tile>
   </mat-grid-list>
   <mat-form-field color='accent'>
-    <textarea matInput matTextareaAutosize matAutosizeMinRows="3" matAutosizeMaxRows="3" placeholder="Message"></textarea>
+    <textarea [(ngModel)]="message" matInput matTextareaAutosize matAutosizeMinRows="3" matAutosizeMaxRows="3" placeholder="Message"></textarea>
   </mat-form-field>
-  <a mat-button color="Basic">Send Me a Message</a>
+  <a mat-button color="Basic" (click)='onSubmit()'>Send Me a Message</a>
 </div>

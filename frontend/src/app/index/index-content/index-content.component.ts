@@ -15,7 +15,6 @@ export class IndexContentComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.articleService);
   }
   onLike(id) {
     console.log('like');

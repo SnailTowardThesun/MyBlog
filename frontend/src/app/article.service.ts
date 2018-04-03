@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RequestOptions, Headers } from '@angular/http';
 import { Article, Comment, Category } from './module/article';
 import { Observable } from 'rxjs/Observable';
 
@@ -28,7 +29,10 @@ export class ArticleService {
       this.articles = <Article[]>r.data['article']
     });
   }
-
+  private get xsrfToken() {
+    // todo: some logic to retrieve the cookie here. we're in a service, so you can inject anything you'd like for this
+    return '';
+  }
   private getArticle(path) {
     const url = this.apiURL + '/article?' + path;
 
@@ -53,5 +57,15 @@ export class ArticleService {
     const url = this.apiURL + '/category?name=' + name;
 
     return this.http.get<ResponseData>(url);
+  }
+
+  public setComment(email: string, name: string, message: string) {
+    const url = this.apiURL + '/register_comment';
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post<ResponseData>(url, { "email": email, "name": name, "message": message }, httpOptions);
   }
 }

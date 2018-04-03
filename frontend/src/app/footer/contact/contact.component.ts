@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from '../../article.service';
 
 @Component({
   selector: 'app-contact',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private articleService: ArticleService) { }
+
+  email: string;
+  name: string;
+  message: string;
 
   ngOnInit() {
   }
 
+  onSubmit() {
+    this.articleService.setComment(this.email, this.name, this.message).subscribe(r => {
+      console.log(r.code);
+    });
+  }
 }

@@ -53,3 +53,16 @@ class Comment(models.Model):
 
     class Meta:
         db_table = 'comment'
+
+
+class LeaveMessage(models.Model):
+    id = models.UUIDField(primary_key=True, max_length=36, default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=1024)
+    email = models.CharField(max_length=1024)
+    message = models.CharField(max_length=9192)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        db_table = 'leaveMessage'

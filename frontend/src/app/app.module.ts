@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatButtonModule, MatCheckboxModule, MatToolbarModule, MatGridListModule } from '@angular/material';
@@ -24,6 +25,7 @@ import { IndexSlideComponent } from './index/index-slide/index-slide.component';
 import { ArticleService } from './article.service';
 import { MarkdownModule } from 'angular2-markdown';
 import { SearchResultComponent } from './search-result/search-result.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    FormsModule,
     MatToolbarModule,
     MatButtonModule,
     MatGridListModule,
