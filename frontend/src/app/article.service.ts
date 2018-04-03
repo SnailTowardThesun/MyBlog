@@ -12,7 +12,7 @@ interface ResponseData {
 @Injectable()
 export class ArticleService {
 
-  apiURL = 'http://localhost:8000/blog';
+  apiURL = 'http://www.snailtown.me/blog';
 
   public articles: Article[];
   public categories: Category[];
@@ -26,7 +26,7 @@ export class ArticleService {
     const url = this.apiURL + '/articles';
 
     this.http.get<ResponseData>(url).subscribe(r => {
-      this.articles = <Article[]>r.data['article']
+      this.articles = <Article[]>r.data['article'];
     });
   }
   private get xsrfToken() {
@@ -66,6 +66,6 @@ export class ArticleService {
         'Content-Type': 'application/json'
       })
     };
-    return this.http.post<ResponseData>(url, { "email": email, "name": name, "message": message }, httpOptions);
+    return this.http.post<ResponseData>(url, { 'email': email, 'name': name, 'message': message }, httpOptions);
   }
 }
