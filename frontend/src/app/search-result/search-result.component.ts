@@ -13,11 +13,16 @@ export class SearchResultComponent implements OnInit {
   constructor(private articleService: ArticleService, private route: ActivatedRoute) { }
 
   private articles: Article[];
+  private category: string;
 
   ngOnInit() {
-    this.articleService.getArticlesByCategory(this.route.snapshot.paramMap.get('category')).subscribe(r => {
+    const param = this.route.snapshot.paramMap.get('category');
+    this.articleService.getArticlesByCategory(param).subscribe(r => {
       this.articles = <Article[]>(r.data['article'])
     })
+
+    this.category = param;
+
   }
 
 }

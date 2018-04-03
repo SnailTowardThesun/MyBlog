@@ -69,7 +69,7 @@ def get_article_by_category(request):
         data = {'code': errno.ERROR_HTTP_METHOD_INVALID, "data": {}}
         return HttpResponseForbidden(json.dumps(data))
 
-    result = Category.objects.filter(id=request.GET['id'])
+    result = Category.objects.filter(name=request.GET['name'])
     res = {
         'code': 0,
         'data': {

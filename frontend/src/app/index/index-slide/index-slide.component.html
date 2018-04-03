@@ -18,7 +18,7 @@
     <mat-card-content>
       <mat-nav-list>
         <mat-list-item *ngFor='let category of articleService.categories'>
-          <a matLine href='javascript:void(0)' routerLink="/result/{{ category.id }}">
+          <a matLine href='javascript:void(0)' routerLink="/result/{{ category.name }}">
             {{ category.name }}
           </a>
           <button mat-icon-button color='primary'>

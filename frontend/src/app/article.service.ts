@@ -49,8 +49,8 @@ export class ArticleService {
     });
   }
 
-  public getArticlesByCategory(id: string) {
-    const url = this.apiURL + '/category?id=' + id;
+  public getArticlesByCategory(name: string) {
+    const url = this.apiURL + '/category?name=' + name;
 
     return this.http.get<ResponseData>(url);
   }
