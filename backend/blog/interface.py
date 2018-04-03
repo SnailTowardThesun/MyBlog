@@ -3,6 +3,8 @@ from . import errno
 import json
 from .models import Article, Comment, Category
 from django.core.files.base import ContentFile
+from django.contrib.staticfiles.storage import staticfiles_storage
+import os, pathlib
 
 
 # for GET request
@@ -34,7 +36,16 @@ def get_article(request):
         data = {'code': errno.ERROR_HTTP_METHOD_INVALID, "data": {}}
         return HttpResponseForbidden(json.dumps(data))
 
-    file_to_send = ContentFile("# title")
+    if not request.GET['path']:
+        data = {'code': errno.ERROR_ARTICLE_NOT_EXISTS, "data": {}}
+        return HttpResponseForbidden(json.dumps(data))
+
+    path = 'blog/' + staticfiles_storage.url(request.GET['path'])
+    if not os.path.isfile(path):
+        data = {'code': errno.ERROR_ARTICLE_NOT_EXISTS, 'data': {}}
+        return HttpResponseForbidden(json.dumps(data))
+
+    file_to_send = ContentFile(pathlib.Path(path).read_text())
     response = HttpResponse(file_to_send)
     response['Content-Length'] = file_to_send.size
     return response
