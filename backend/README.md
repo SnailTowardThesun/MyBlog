@@ -57,7 +57,7 @@
     }
     ```
 
-1. 查询所有tag信息
+1. 查询所有tag信息
     request:
     ```
     GET http://localhost/blog/categroies
@@ -125,3 +125,4 @@
 
     <strong>TODO...</strong>
     
+
