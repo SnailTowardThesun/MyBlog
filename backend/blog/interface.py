@@ -3,10 +3,9 @@ from . import errno
 import json
 from .models import Article, Comment, Category, LeaveMessage
 from django.core.files.base import ContentFile
-from django.contrib.staticfiles.storage import staticfiles_storage
+from django.conf import settings
 import os
 import pathlib
-from django.core.mail import send_mail
 
 
 # for GET request
@@ -42,7 +41,7 @@ def get_article(request):
         data = {'code': errno.ERROR_ARTICLE_NOT_EXISTS, "data": {}}
         return HttpResponseForbidden(json.dumps(data))
 
-    path = 'blog/' + 'static/' + request.GET['path']
+    path = settings.STATIC_ROOT + settings.STATIC_URL + '/blog/' + request.GET['path']
     if not os.path.isfile(path):
         data = {'code': errno.ERROR_ARTICLE_NOT_EXISTS, 'data': {}}
         return HttpResponseForbidden(json.dumps(data))

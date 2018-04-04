@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ArticleService } from '../article.service';
 
 @Component({
   selector: 'app-article-detail',
@@ -7,11 +8,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./article-detail.component.css']
 })
 export class ArticleDetailComponent implements OnInit {
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private articleService: ArticleService) { }
 
   articlePath: string;
 
   ngOnInit() {
-    this.articlePath =  'http://localhost:8000/blog' + '/article?path=' + this.route.snapshot.paramMap.get('path');
+    this.articlePath =  this.articleService.apiURL + '/article?path=' + this.route.snapshot.paramMap.get('path');
   }
 }

@@ -12,7 +12,7 @@ interface ResponseData {
 @Injectable()
 export class ArticleService {
 
-  apiURL = 'http://www.snailtown.me/blog';
+  public apiURL = 'http://www.snailtown.me/blog';
 
   public articles: Article[];
   public categories: Category[];
@@ -29,18 +29,15 @@ export class ArticleService {
       this.articles = <Article[]>r.data['article'];
     });
   }
-  private get xsrfToken() {
-    // todo: some logic to retrieve the cookie here. we're in a service, so you can inject anything you'd like for this
-    return '';
-  }
+
   private getArticle(path) {
-    const url = this.apiURL + '/article?' + path;
+    const url = this.apiURL + '/article?path=' + path;
 
     return this.http.get<Response>(url);
   }
 
   public getArticleComments(article: Article): Observable<ResponseData> {
-    const url = this.apiURL + '/comment?article_id' + article.id;
+    const url = this.apiURL + '/comment?article_id=' + article.id;
 
     return this.http.get<ResponseData>(url);
   }
