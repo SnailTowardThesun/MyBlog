@@ -41,7 +41,7 @@ def get_article(request):
         data = {'code': errno.ERROR_ARTICLE_NOT_EXISTS, "data": {}}
         return HttpResponseForbidden(json.dumps(data))
 
-    path = settings.STATIC_ROOT + settings.STATIC_URL + '/blog/' + request.GET['path']
+    path = settings.STATIC_ROOT + '/blog/' + request.GET['path']
     if not os.path.isfile(path):
         data = {'code': errno.ERROR_ARTICLE_NOT_EXISTS, 'data': {}}
         return HttpResponseForbidden(json.dumps(data))
