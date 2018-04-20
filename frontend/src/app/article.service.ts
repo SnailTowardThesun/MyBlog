@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RequestOptions, Headers } from '@angular/http';
 import { Article, Comment, Category } from './module/article';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 interface ResponseData {
   code: number;
@@ -12,28 +13,26 @@ interface ResponseData {
 @Injectable()
 export class ArticleService {
 
-  public apiURL = 'http://www.snailtown.me/blog';
+  // public apiURL = 'http://www.snailtown.me/blog';
+  public apiURL = 'http://127.0.0.1:8000/blog';
 
-  public articles: Article[];
-  public categories: Category[];
+  articles: Article[];
+  categories: Category[];
 
   constructor(private http: HttpClient) {
-    this.getAritcles();
-    this.getCategoeries();
+
   }
 
-  private getAritcles() {
+  public getAritcles() {
     const url = this.apiURL + '/articles';
 
-    this.http.get<ResponseData>(url).subscribe(r => {
-      this.articles = <Article[]>r.data['article'];
-    });
+    return this.http.get<ResponseData>(url);
   }
+  
+  public getCategoeries() {
+    const url = this.apiURL + '/categories';
 
-  private getArticle(path) {
-    const url = this.apiURL + '/article?path=' + path;
-
-    return this.http.get<Response>(url);
+    return this.http.get<ResponseData>(url);
   }
 
   public getArticleComments(article: Article): Observable<ResponseData> {
@@ -42,13 +41,7 @@ export class ArticleService {
     return this.http.get<ResponseData>(url);
   }
 
-  private getCategoeries() {
-    const url = this.apiURL + '/categories';
 
-    this.http.get<ResponseData>(url).subscribe(res => {
-      this.categories = <Category[]>res.data['categories'];
-    });
-  }
 
   public getArticlesByCategory(name: string) {
     const url = this.apiURL + '/category?name=' + name;

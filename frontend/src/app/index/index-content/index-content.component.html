@@ -2,7 +2,7 @@
     <h2>
         For The Good Future
     </h2>
-    <mat-card *ngFor='let article of articleService.articles'>
+    <mat-card *ngFor='let article of articlesForShow'>
         <mat-card-title>
             <a href='javascript:void(0)' routerLink="/article/{{ article.path }}">{{ article.title }}</a>
         </mat-card-title>
@@ -16,9 +16,12 @@
         </mat-card-content>
         <mat-card-actions>
             <a mat-raised-button color='primary' routerLink="/article/{{ article.path }}">Read More</a>
-            <button mat-raised-button color='primary' (click)="onLike(article.id)" disabled>LIKE</button>
+            <button mat-raised-button color='primary' (click)="onLike(article.id)">LIKE</button>
             <button mat-raised-button color='primary' (click)="onDislike(article.id)" disabled>DISLIKE</button>
             <button mat-raised-button color='primary' (click)="onShare(article.id)" disabled>SHARE</button>
         </mat-card-actions>
     </mat-card>
+
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)">
+    </mat-paginator>
 </div>

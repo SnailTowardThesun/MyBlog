@@ -10,10 +10,19 @@ import { ArticleService } from '../../article.service';
 })
 export class IndexSlideComponent implements OnInit {
 
-  constructor(private articleService: ArticleService) { }
+  categories: Category[];
+  articles: Article[];
+  constructor(private articleService: ArticleService) {
+  }
 
   ngOnInit() {
+    this.articleService.getAritcles().subscribe(res => {
+      this.articles = <Article[]>res.data['article'];
+    });
 
+    this.articleService.getCategoeries().subscribe(res => {
+      this.categories = <Category[]>res.data['categories'];
+    });
   }
 
 }
