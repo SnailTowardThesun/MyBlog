@@ -28,7 +28,7 @@ export class ArticleService {
 
     return this.http.get<ResponseData>(url);
   }
-  
+
   public getCategoeries() {
     const url = this.apiURL + '/categories';
 

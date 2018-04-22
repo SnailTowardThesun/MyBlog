@@ -21,7 +21,15 @@ export class IndexContentComponent implements OnInit {
   // MatPaginator Output
   pageEvent: PageEvent;
 
+  private doChangePage(index) {
+    const start = index * this.pageSize;
+    this.articlesForShow = this.articles.slice(start, start + this.pageSize);
+  }
+
   onPageChange(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.doChangePage(event.pageIndex);
+
     console.log('current index: ' + event.pageIndex);
     console.log('the size of one page: ' + event.pageSize);
     console.log('totle number: ' + event.length);
@@ -33,7 +41,7 @@ export class IndexContentComponent implements OnInit {
   ngOnInit() {
     this.articleService.getAritcles().subscribe(r => {
       this.articles = r.data['article'];
-      this.articlesForShow = this.articles;
+      this.doChangePage(0);
       this.length = this.articles.length;
     });
   }

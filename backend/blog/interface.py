@@ -14,7 +14,7 @@ def get_all_articles(request):
         data = {'code': errno.ERROR_HTTP_METHOD_INVALID, "data": {}}
         return HttpResponseForbidden(json.dumps(data))
 
-    articles = Article.objects.all()
+    articles = Article.objects.all().order_by('-publish_date')
 
     res = {
         'code': 0,
