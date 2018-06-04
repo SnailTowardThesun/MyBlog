@@ -41,8 +41,6 @@ export class ArticleService {
     return this.http.get<ResponseData>(url);
   }
 
-
-
   public getArticlesByCategory(name: string) {
     const url = this.apiURL + '/category?name=' + name;
 
