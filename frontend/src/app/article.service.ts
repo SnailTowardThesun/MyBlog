@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RequestOptions, Headers } from '@angular/http';
-import { Article, Comment, Category } from './module/article';
+import { Article, Category } from './module/article';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 
 interface ResponseData {
   code: number;
@@ -28,7 +26,7 @@ export class ArticleService {
 
     return this.http.get<ResponseData>(url);
   }
-  
+
   public getCategoeries() {
     const url = this.apiURL + '/categories';
 
@@ -40,8 +38,6 @@ export class ArticleService {
 
     return this.http.get<ResponseData>(url);
   }
-
-
 
   public getArticlesByCategory(name: string) {
     const url = this.apiURL + '/category?name=' + name;

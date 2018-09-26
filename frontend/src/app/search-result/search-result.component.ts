@@ -18,8 +18,8 @@ export class SearchResultComponent implements OnInit {
   ngOnInit() {
     const param = this.route.snapshot.paramMap.get('category');
     this.articleService.getArticlesByCategory(param).subscribe(r => {
-      this.articles = <Article[]>(r.data['article'])
-    })
+      this.articles = <Article[]>(r.data['article']);
+    });
 
     this.category = param;
 

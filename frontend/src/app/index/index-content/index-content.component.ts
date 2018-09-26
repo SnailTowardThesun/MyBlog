@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Article, Category } from '../../module/article';
-import { ARTICLES } from '../../module/mock-aritcle';
+import { Article } from '../../module/article';
 import { PageEvent } from '@angular/material';
 import { ArticleService } from '../../article.service';
 

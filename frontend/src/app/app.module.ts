@@ -14,7 +14,6 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PlayerComponent } from './player/player.component';
 import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
@@ -25,12 +24,10 @@ import { IndexSlideComponent } from './index/index-slide/index-slide.component';
 import { ArticleService } from './article.service';
 import { MarkdownModule } from 'angular2-markdown';
 import { SearchResultComponent } from './search-result/search-result.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayerComponent,
     IndexComponent,
     FooterComponent,
     ArticleDetailComponent,
