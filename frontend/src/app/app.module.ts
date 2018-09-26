@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +19,7 @@ import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { AboutComponent } from './footer/about/about.component';
-import { ContactComponent } from './footer/contact/contact.component';
+import { ContactComponent, WarningDlgComponent } from './footer/contact/contact.component';
 import { IndexContentComponent } from './index/index-content/index-content.component';
 import { IndexSlideComponent } from './index/index-slide/index-slide.component';
 import { ArticleService } from './article.service';
@@ -36,6 +37,7 @@ import { SearchResultComponent } from './search-result/search-result.component';
     IndexContentComponent,
     IndexSlideComponent,
     SearchResultComponent,
+    WarningDlgComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,10 +53,12 @@ import { SearchResultComponent } from './search-result/search-result.component';
     MatPaginatorModule,
     MatCardModule,
     MatIconModule,
+    MatDialogModule,
     HttpClientModule,
     MarkdownModule.forRoot(),
   ],
   providers: [ArticleService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ContactComponent, WarningDlgComponent],
 })
 export class AppModule { }
