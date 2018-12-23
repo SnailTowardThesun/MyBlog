@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Article, Category } from './module/article';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 interface ResponseData {
   code: number;
