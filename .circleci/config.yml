@@ -7,14 +7,14 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: circleci/node:10
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/myblog/frontend
+    working_directory: ~/project
 
     steps:
       - checkout
@@ -29,22 +29,22 @@ jobs:
       # Install project dependencies
       - run:
           name: Install local dependencies
-          command: npm install
+          command: cd ~/project/frontend && npm install
 
       - save_cache:
           paths:
-            - node_modules
+            - ~/project/frontend/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
           name: Building
-          command: npm run build-prod
+          command: cd ~/project/frontend && npm run build
 
       # Cache the dist folder for the deploy job
       - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
           paths:
-            - dist
+            - ~/project/frontend/dist
 
 
 
