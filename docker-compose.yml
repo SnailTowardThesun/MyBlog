@@ -1,0 +1,22 @@
+version: '3'
+services:
+  mysql:
+    image: "mysql:5.7"
+    restart: always
+    environment:
+       MYSQL_ROOT_PASSWORD: "!@QWas()OPl;123"
+       MYSQL_DATABASE: blog
+    ports:
+     - "9306:3306"
+  web:
+    build: ./backend
+    command: |
+        bash -c '
+        sleep 30 &&
+        python manage.py migrate &&
+        python manage.py runserver 0.0.0.0:8000
+        '
+    ports:
+     - "9000:8000"
+    depends_on:
+     - mysql
