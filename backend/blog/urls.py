@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^category', interface.get_article_by_category),
     url(r'^categories', interface.get_all_categories),
     url(r'^comment', interface.get_comment_by_article),
-    url(r'^register_comment', interface.post_comment)
+    url(r'^register_comment', interface.post_comment),
+    url(r'^register_article', interface.post_article)
 ]

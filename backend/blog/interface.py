@@ -1,11 +1,15 @@
-from django.http import HttpResponse, HttpResponseForbidden
-from . import errno
-import json
-from .models import Article, Comment, Category, LeaveMessage
-from django.core.files.base import ContentFile
-from django.conf import settings
 import os
 import pathlib
+import json
+
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect
+from django.shortcuts import render
+from django.core.files.base import ContentFile
+from django.conf import settings
+
+from . import errno
+from .models import Article, Comment, Category, LeaveMessage
+from .article import articleManager
 
 
 # for GET request
@@ -134,8 +138,19 @@ def post_comment(request):
         LeaveMessage(name=request_json_obj['name'], email=request_json_obj['email'],
                      message=request_json_obj['message']).save()
 
-    res = {
-        'code': 0,
-        'data': {}
-    }
+    res = {'code': 0,'data': {}}
+    return HttpResponse(json.dumps(res))
+
+
+g_article_manager = articleManager()
+
+def post_article(request):
+    if request.method != 'POST':
+        data = {'code':errno.ERROR_HTTP_METHOD_INVALID, 'data':{}}
+        return HttpResponseForbidden(json.dumps(data))
+    
+    g_article_manager.addArticle('1')
+    
+    res = {'code':errno.ERROR_SUCCESS,'data':{}}
+
     return HttpResponse(json.dumps(res))
